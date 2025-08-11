@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eventos da Semana</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; padding: 20px; }
+  h1 { text-align: center; color: #444; }
+  .dia { background: white; margin: 10px 0; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+  .dia h2 { margin: 0; color: #2b6cb0; }
+  .evento { margin-left: 15px; color: #555; }
+</style>
+</head>
+<body>
+<h1>📅 Eventos da Semana</h1>
+<div id="lista-eventos"></div>
+
+<script>
+async function carregarEventos() {
+    try {
+        const res = await fetch("eventos.json");
+        const dados = await res.json();
+
+        const container = document.getElementById("lista-eventos");
+        container.innerHTML = "";
+
+        for (let dia in dados) {
+            const divDia = document.createElement("div");
+            divDia.className = "dia";
+
+            const titulo = document.createElement("h2");
+            titulo.textContent = dia;
+            divDia.appendChild(titulo);
+
+            if (dados[dia].length > 0) {
+                dados[dia].forEach(evento => {
+                    const p = document.createElement("p");
+                    p.className = "evento";
+                    p.textContent = evento;
+                    divDia.appendChild(p);
+                });
+            } else {
+                const p = document.createElement("p");
+                p.className = "evento";
+                p.textContent = "Nenhum evento.";
+                divDia.appendChild(p);
+            }
+
+            container.appendChild(divDia);
+        }
+    } catch (err) {
+        console.error("Erro ao carregar eventos:", err);
+    }
+}
+
+carregarEventos();
+</script>
+</body>
+</html>
