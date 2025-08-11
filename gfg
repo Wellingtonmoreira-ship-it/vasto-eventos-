@@ -1,0 +1,18 @@
+{
+  "Segunda-feira": [
+    "Reunião da equipe - 9h",
+    "Almoço de confraternização - 12h"
+  ],
+  "Terça-feira": [
+    "Treinamento de vendas - 14h"
+  ],
+  "Quarta-feira": [
+    "Apresentação para clientes - 10h"
+  ],
+  "Quinta-feira": [],
+  "Sexta-feira": [
+    "Happy hour - 18h"
+  ],
+  "Sábado": [],
+  "Domingo": []
+}
